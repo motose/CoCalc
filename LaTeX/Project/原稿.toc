@@ -1,0 +1,4 @@
+\contentsline {chapter}{はじめに}{5}{chapter*.2}%
+\contentsline {chapter}{\numberline {\rensuji {1}}見出し　吾輩は猫である。}{7}{chapter.1}%
+\contentsline {chapter}{\numberline {\rensuji {2}}縦長の写真のテスト}{13}{chapter.2}%
+\contentsline {chapter}{あとがき}{15}{chapter*.3}%

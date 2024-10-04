@@ -1,0 +1,55 @@
+%% -*- mode: latex; coding: utf-8; indent-tabs-mode: nil -*-
+%%
+%% Copyright(C) Yutaka Motose All rights reserved.
+%% Lastupdate: 2023-03-20 23:13:57 JST
+%%
+%% Author: Yutaka Motose <motose@etech21.net>
+%%
+
+% ----------------------------------------------------------------------
+\documentclass[../master.tex]{subfiles}
+% 文書クラスが特殊であることに注意.
+% オプション引数に親ファイルへのパスを指定し,クラスをsubfilesとする.
+
+\graphicspath{{images/}}
+% sub1.texからみた画像フォルダへのパス
+
+\setcounter{section}{0}
+% セクション番号を1から付番(0からではないです)
+
+\begin{document}
+\section{サブ2}
+    これはsub2.texです.
+
+    コンパイル時に親ファイルのプリアンブルが引き継がれるので親ファイルで設定したマクロも使えます
+    もちろん親ファイルで読み込んだパッケージも使えます.
+    \begin{comment}
+        コメント環境
+    \end{comment}
+
+    画像フォルダにパスを通しているので,
+    \begin{figure}[h]
+        \centering
+        %\includegraphics{sub1/sub1_1.png}
+    \end{figure}
+    のようにして画像を挿入することができます.
+
+    一応数式を書いてみます.
+    %\begin{align}
+        y=f(x)
+    %\end{align}
+
+%\ifSubfilesClassLoaded{
+%\bibliographystyle{unsrt}
+%\bibliography{ref2.bib}
+%}{}
+
+
+\end{document}
+%% ---------------------------------------------------------------------
+%% coding: utf-8
+%% version-control: t
+%% kept-new-versions: 3
+%% kept-old-versions: 0
+%% End:
+%% preamble.tex ends here

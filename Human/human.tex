@@ -1,0 +1,103 @@
+%% -*- mode: latex; coding: utf-8; indent-tabs-mode: nil -*-
+%%
+%% Copyright(C) Yutaka Motose All rights reserved.
+%% Lastupdate: 2023-03-20 23:13:57 JST
+%%
+%% Author: Yutaka Motose <motose@etech21.net>
+%%
+\ifdefined\MainDoc
+    % MainDocが定義されていれば何もしない
+\else
+    \newcommand{\MainDoc}{} % define the MainDoc command here
+    \ifdefined\Preamble
+        % Preambleが定義されていれば何もしない
+    \else
+        \input{preamble.tex}
+        \begin{document}
+    \fi
+\fi
+%%
+%% ---------------------------------------------------------------------
+%%
+
+
+\part{最初の部　人間とは}
+我々人類に関しての考察
+
+\section{その中の節　男らしさ、女らしさ}
+文化の根底にある性
+
+\subsection{小節 男らしさ}
+男らしさとは何であろうか。
+
+\subsubsection{さらに小小節　生物学的な男らしさ}
+生物学的男性性とは動物の雄に共通の
+
+\paragraph{段落の名前　繁殖行動}
+雄の行動は繁殖の為
+
+\subparagraph{小段落の名前　性交}
+性交後尾に関して
+
+
+
+
+
+
+\section{2023年3月21日}
+\subsection{初めてのSage\TeX{}}
+
+Sage\TeX{}を使うと、あなたの\LaTeX{}ドキュメントにSageの計算結果を埋め込む事ができます。
+$\sage{number_of_partitions(8)}$ integer partitions of $8$.
+自分で計算したり、どこかへカットアンドペーストする必要もありません。
+
+以下がSage codeの一例です。
+
+\begin{sageblock}
+    f(x) = exp(x) * sin(2*x)
+\end{sageblock}
+
+この関数 $f$ の微分は
+
+\[
+\frac{\mathrm{d}^{2}}{\mathrm{d}x^{2}} \sage{f(x)} =
+\sage{diff(f, x, 2)(x)}.
+\]
+
+区間 $-1$ から $1$ で $f$ をプロットすると
+\sageplot[width=2.5in]{plot(f, -1, 1)}
+
+\begin{sagesilent}
+f(x,y)=x*sin(y); grad_f=f.gradient()
+\end{sagesilent}
+Let $f(x,y)=\sage{f(x,y)}$. Then $\nabla f=\sage{grad_f(x,y)}$.
+\sageplot[width=1.5in]{plot_vector_field(grad_f, (x,-3,3), (y,0,3)),frame=True, aspect_ratio=1}
+
+\begin{sagesilent}
+f(x,y)=x*sin(y)+y*cos(x)
+\end{sagesilent}
+\sageplot[width=2.5in]{plot3d(f,(x,-3,3),(y,-3,3))}
+
+
+
+
+
+%%
+%% ---------------------------------------------------------------------
+%%
+\ifdefined\MainDoc
+    \ifdefined\Preamble
+        \end{document}
+    \else
+        % nothing here
+    \fi
+\else
+    % nothing here
+\fi
+%% ---------------------------------------------------------------------
+%% coding: utf-8
+%% version-control: t
+%% kept-new-versions: 3
+%% kept-old-versions: 0
+%% End:
+%% human.tex ends here

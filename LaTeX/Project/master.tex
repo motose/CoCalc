@@ -1,0 +1,68 @@
+%%% -*- Mode: Latex; coding: utf-8; indent-tabs-mode: nil -*-
+% !TeX root = master.tex
+%%
+%% Copyright(C) Yutaka Motose All rights reserved.
+%% Lastupdate: 2024-10-04 13:0812:04 JST
+%%
+%% Author: Yutaka Motose <motose@etech21.net>
+%%
+\unless\ifdefined\Preamble
+    \newcommand{\MainDoc}{}  % define the MainDoc command here
+%\def\twocol{} % 2コラムにする
+\def\usesagetex{} % SageTeXを使う
+%\def\landscape{} % Landscape
+\input{preamble.tex}
+\definecolor{myred}{rgb}{0.85,0,0.1}
+\definecolor{mypink}{rgb}{1,0.92,0.92}
+\setlength{\fboxsep}{2pt}
+\begin{document}
+\graphicspath{{images/}}
+
+%\numberwithin{equation}{section}
+% section単位で数式に付番
+
+\title{subfileによるファイル分割}
+\author{CoCo}
+\date{\today}
+
+\maketitle
+猫𠮟るより猫を囲え\
+囲ってから叱れ\
+叱ってから餌をやれ
+
+\ce{ H2O }, $\ce{H2O}$
+
+$K = \frac{[\ce{Hg^2+}][\ce{Hg}]}{[\ce{Hg2^2+}]}$
+
+\sffamily \color{myred}
+\fcolorbox{myred}{mypink}{☃謹賀新年☃}
+\sffamily \color{black}
+
+\clearpage
+\graphicspath{{sub1/images/}}
+\subfile{sub1/sub1.tex}
+\clearpage
+\graphicspath{{sub2/images/}}
+\subfile{sub2/sub2.tex}
+\clearpage
+\graphicspath{{sub3/images/}}
+\subfile{sub3/sub3.tex}
+
+%\begin{comment}
+%\end{comment}
+
+\bibliographystyle{unsrt}
+\bibliography{bib/ref2.bib}
+
+\end{document}
+%% ---------------------------------------------------------------------
+%%% coding: utf-8
+%%% version-control: t
+%%% kept-new-versions: 3
+%%% kept-old-versions: 0
+%%% Local Variables:
+%%% mode: japanese-latex
+%%% TeX-engine: luatex
+%%% TeX-master: t
+%%% End:
+%%% master.tex ends here

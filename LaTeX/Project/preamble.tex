@@ -1,0 +1,176 @@
+%% -*- mode: latex; coding: utf-8; indent-tabs-mode: nil -*-
+%%
+%% Copyright(C) Yutaka Motose All rights reserved.
+%% Lastupdate: 2023-03-20 23:13:57 JST
+%%
+%% Author: Yutaka Motose <motose@etech21.net>
+%%
+% ----------------------------------------------------------------------
+%\RequirePackage{plautopatch} %for upLaTeX
+%%
+%% ドキュメントクラス
+%%
+\documentclass[%
+autodetect-engine,dvi=dvipdfmx,%エンジンを自動判別
+ja=standard,%標準設定
+a4paper,papersize,%用紙サイズ paper={100mm}{148mm}
+jbase=12Q,% 11pt, フォントサイズ、基底フォントサイズbase=8.5pt、jbase=11Q,
+jafont=ipaex,%基本和文フォン hiragino-pron
+japaram={jis2004},%2004JIS 字形を選択
+japaram={units},%和文用の単位を使う
+enablejfam=true,%数式の一部として和文文字を出力
+hiresbb,%graphicx にオプション
+oneside,%奇数/偶数ページを同じレイアウト
+\ifdefined\twocol
+twocolumn,%文章を2段組
+\fi
+fleqn%数式を左寄せ
+leqno,%数式番号を左寄せ
+\ifdefined\landscape
+landscape,%用紙の向きを横長に
+\fi
+]{bxjsarticle}
+%bxjsarticle 章のないレポート jsarticle クラス相当
+%bxjsreport 章のあるレポート jsreport クラス相当
+%bxjsbook 書籍 jsbook クラス相当
+%bxjsslide スライド jsarticle クラス + slide オプション相当
+% ----------------------------------------------------------------------
+
+
+%%
+%% パッケージ
+%%
+\usepackage{subfiles}%ファイル分割
+\usepackage{usebib}
+%\bibinput{$TEXMFHOME/bibtex/bib/ref2}
+\usepackage{bxpapersize}% ペーパーサイズ
+\usepackage{etoolbox}
+\usepackage{graphicx}%画像が扱える。
+\usepackage{grffile}
+\usepackage[table]{xcolor}
+%色の名前を増やす。 tikzパッケージよりも前に読み込みます。
+\PassOptionsToPackage{usenames,dvipsnames,svgnames,x11names}{xcolor}
+\usepackage{textcomp}
+\usepackage[bookmarks=true,colorlinks]{hyperref}
+\usepackage{ruby}%ルビを付けるURLをそのまま書ける。
+\usepackage{url}%
+\usepackage[abs]{overpic}
+%\usepackage{verse}
+\usepackage{hyperref}
+
+\usepackage{tikz}%描画 \begin{tikzpicture} \end{tikzpicture}
+\usepackage{tkzexample}
+\usepackage{xcolor}
+\usepackage{calc}
+\usepackage{tkz-euclide,tkzexample,pgfornament} 
+\usetikzlibrary{backgrounds}
+\parindent=0pt
+
+% 数式系パッケージ
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{mathpazo}%数式のフォントをPalatinoに変える。
+%\usepackage{mathptmx}%数式のフォントをTimesに変える。
+\usepackage{verbatim}%入力通り出力する。\begin{verbatim}  \end{verbatim}
+\ifdefined\usesagetex %SageTeXを使う
+\usepackage{sagetex}
+\usepackage{gnuplot-lua-tikz}%gnuplotのtikz出力を描画
+\fi
+
+\usepackage[version=4]{mhchem} \RequirePackage{amsmath,amssymb,latexsym} %化学式が書ける。
+
+% フォント
+\usepackage[math]{iwona}
+\usepackage[scale=0.9]{roboto}
+\usepackage{type1cm}%存在しない Type 1 フォントは存在するものを拡大・縮小して使うようにする
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% ----------------------------------------------------------------------
+
+% TikZ
+\usetikzlibrary{intersections}%交点を求めるtikzライブラリ
+\usetikzlibrary{calc}%座標計算するtikzライブラリ
+\usetikzlibrary{arrows}%矢印の種類を増やすtikzライブラリ
+\usetikzlibrary{automata}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{calendar}
+\usetikzlibrary{er}
+\usetikzlibrary{mindmap}
+\usetikzlibrary{matrix}
+\usetikzlibrary{folding}
+\usetikzlibrary{patterns}
+\usetikzlibrary{plothandlers}
+\usetikzlibrary{shapes}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{decorations}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{topaths}
+\usetikzlibrary{trees}
+\usetikzlibrary{petri}
+\usetikzlibrary{shadings}
+\renewcommand*{\familydefault}{\sfdefault}
+\colorlet{winter}{blue}
+\colorlet{spring}{green!60!black}
+\colorlet{summer}{orange}
+\colorlet{fall}{red}
+% A counter, since TikZ is not clever enough (yet) to handle
+% arbitrary angle systems.
+\newcount\mycount
+\usepackage{tkz-graph}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{shapes,arrows}
+% ----------------------------------------------------------------------
+
+\usepackage[margin=10pt,font=small,labelfont=bf]{caption}
+\newcommand*{\h}{\hspace{5pt}}% for indentation
+\newcommand*{\hh}{\h\h}% double indentation
+
+%例に必要な色
+\colorlet{examplefill}{yellow!80!black}   %（プリアンブルでも本文の中でも環境中でもかまいません）
+\colorlet{Indigo}{blue!80!black}
+
+%日付の成形
+\newcommand{\todayd}{%
+	\the\year/{\ifnum \month < 10 0\the\month \else \the\month \fi}/%
+	{\ifnum \day < 10 0\the\day \else \the\day \fi}}
+\newcommand{\todaye}{\the\year/\the\month/\the\day}
+
+% ----------------------------------------------------------------------
+\ifdefined\MainDoc
+\newcommand{\Preamble}{} % define the Preamble command here
+\else
+\begin{document}
+%preamble
+%
+%Hello, 
+%\LaTeX
+%
+%テスト
+%
+昨日、近所の吉野家行ったんです。吉野家。
+
+そしたらなんか人がめちゃくちゃいっぱいで座れないんです。
+で、よく見たらなんか垂れ幕下がってて、150円引き、とか書いてあるんです。
+
+もうね、アホかと。馬鹿かと。
+\begin{verse}
+お前らな、150円引き如きで普段来てない吉野家に来てんじゃねーよ、ボケが。
+150円だよ、150円。
+なんか親子連れとかもいるし。
+一家4人で吉野家か。おめでてーな。
+よーしパパ特盛頼んじゃうぞー、とか言ってるの。もう見てらんない。
+お前らな、150円やるからその席空けろと。
+\end{verse}
+\end{document}
+\fi
+%% ---------------------------------------------------------------------
+%% coding: utf-8
+%% version-control: t
+%% kept-new-versions: 3
+%% kept-old-versions: 0
+%% End:
+%% preamble.tex ends here
