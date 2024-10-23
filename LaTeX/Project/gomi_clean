@@ -1,2 +1,2 @@
 #!/bin/sh
-rm -rf *.a* *.f* *.l* *.o* *.p* *.s* sage-*
+rm -rf *.[abdflops]* sage-*
